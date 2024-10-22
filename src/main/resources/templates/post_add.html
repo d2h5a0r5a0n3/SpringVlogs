@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <!-- head     -->
+    <head th:replace="~{/fragments/head :: head}"> </head>
+    <body>
+                
+            <main>
+                <!--header-->
+                <header th:replace="~{/fragments/header :: header}"> </header>
+
+
+                <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+
+                    <div class="container" style="background-color: rgb(22, 23, 47);">
+                        <form class="form-group custom-form booking-form" action="#" method="post" role="form" th:action="@{/post/add}" th:object="${post}">
+                            <div class="text-center mb-4 pb-lg-2">
+                            <h2 class="text-white">Add Post</h2>
+                            </div>
+                            <input type="hidden" id="account" name="account" th:field="*{account}">
+                            <input type="text" th:field="*{title}" name="title" id="title" class="form-control" placeholder="Enter the title" required>
+                            <!--/* <input type="textarea"  th:field="*{body}" name="body" id="editor" style="background-color:black;" class="form-floating form-control" placeholder="Enter the body" required> */-->
+                            <textarea name="body" th:field="*{body}" id="editor" ></textarea>
+                            <h1 style="height: 10px;"></h1>
+                            <input type="Submit" value="Add Post" style="background-color: chocolate; " class="form-control">
+                        </form>
+                    </div>
+
+                    <div class="hero-slides"></div>
+                </section>
+                <!-- footer -->
+                <footer th:replace="~{/fragments/footer :: footer}"> </footer>
+            </main>
+
+        <!-- JAVASCRIPT FILES -->
+        
+
+    </body>
+</html>

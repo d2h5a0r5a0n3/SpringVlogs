@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- head     -->
+
+<head th:replace="~{/fragments/head :: head}"> </head>
+
+<body>
+  <main>
+    <header th:replace="~{/fragments/header :: header}"> </header>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Delte a Post</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure want to delete the post?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-lg active" data-bs-dismiss="modal">Close</button>
+            <a th:href="@{'/post/'+${post.id}+'/delete'}" class="btn btn-danger" role="button"
+              aria-pressed="true">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="hero-section d-flex justify-content-center align-items-center" id="section_1"
+      style="background:grey">
+      <div class="container">
+        <div class="post">
+          <h5><a th:href="@{'/post/' + ${post.id}}" th:text="${post.title}">Title</a></h5>
+          <h6
+            th:text="'Author: '+${post.account.firstname}+' | Created At: '+${#temporals.format(post.createdAt,'yyyy-MM-dd HH:mm')}+' | Updated At: '+${#temporals.format(post.updatedAt,'yyyy-MM-dd HH:mm')}">
+          </h6>
+          <h6 th:utext="${post.body}">body</h6>
+          <hr style="border: 2px solid black; width: 100%;" />
+          <div sec:authorize="isAuthenticated()" th:if="${isOwner}">
+            <a th:href="@{'/post/'+${post.id}+'/edit'}" class="btn btn-primary btn-lg active" role="button"
+              aria-pressed="true">Edit</a>
+            <a type="button" aria-pressed="true" class="btn btn-warning  btn-lg active" data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">
+              Delete
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer th:replace="~{/fragments/footer :: footer}"> </footer>
+  </main>
+</body>
+
+</html>

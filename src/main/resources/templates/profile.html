@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- head     -->
+
+<head th:replace="~{/fragments/head :: head}"> </head>
+
+<body>
+
+  <main>
+    <!--header-->
+    <header th:replace="~{/fragments/header :: header}"> </header>
+
+
+
+    <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+
+      <div class="container" style="background-color: rgb(22, 23, 47);">
+        <div class="text-center mb-4 pb-lg-2" style="margin: 300px;">
+          <h2 class="text-white">Profile</h2>
+        </div>
+        <img th:src="@{${photo}}" class="rounded-circle" style="width:150px;float:left;padding:10px 10px 10px 10px;"
+        alt="Avatar">
+        <p th:text="${error}" th:if="${error ne null}" class="alert alert-danger"></p>
+        <form method="post" th:action="@{/update_photo}" enctype="multipart/form-data">
+          <div class="form-group">
+            <input type="file" name="file" class="form-control-file">
+          </div>
+          <button type="submit" class="btn btn-primary">Update Photo</button>
+        </form>
+
+        <form class="custom-form booking-form" action="#" method="post" role="form" th:action="@{/profile}"
+          th:object="${account}">
+          <input type="hidden" th:field="*{id}" />
+          <input type="email" th:field="*{email}" name="booking-form-name" id="email" class="form-control"
+            placeholder="Enter the Email" required>
+          <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</p>
+          <input type="password" th:field="*{password}" name="booking-form-name" id="password" class="form-control"
+            placeholder="Enter the Password" required>
+          <input type="text" th:field="*{firstname}" name="booking-form-name" id="firstname" class="form-control"
+            placeholder="Enter the First Name" required>
+          <input type="text" th:field="*{lastname}" name="booking-form-name" id="lastname" class="form-control"
+            placeholder="Enter the Last Name" required>
+          <input type="number" th:field="*{age}" min="18" max="99" name="booking-form-name" id="age"
+            class="form-control" placeholder="Enter the Age" required>
+          <input type="date" th:field="*{date_of_birth}" name="booking-form-name" id="date_of_birth"
+            class="form-control" placeholder="Enter the dob" required>
+          <select name="gender" id="gender" th:field="*{gender}" class="form-control" placeholder="Select the gender">
+            <option value="" disabled selected>Select your gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+          </select>
+          <input type="Submit" value="Update Profile" style="background-color: chocolate; " class="form-control">
+        </form>
+      </div>
+
+      <div class="hero-slides"></div>
+    </section>
+    <!-- footer -->
+    <footer th:replace="~{/fragments/footer :: footer}"> </footer>
+  </main>
+
+  <!-- JAVASCRIPT FILES -->
+
+
+</body>
+
+</html>

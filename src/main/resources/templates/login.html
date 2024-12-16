@@ -1,18 +1,72 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!-- head     -->
-
-<head th:replace="~{/fragments/head :: head}"> </head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Spring Starter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,700;1,200;1,700&display=swap"
+      rel="stylesheet">
+    <link th:href="@{\css\bootstrap-icons.css}" rel="stylesheet">
+    <link th:href="@{\css\bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{\css\tooplate-barista.css}" rel="stylesheet">
+    <link th:href="@{\css\vegas.min.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.css" />
+</head>
 
 <body>
 
-    <main>
-        <!--header-->
-        <header th:replace="~{/fragments/header :: header}"> </header>
-
+    <main><header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                    <img th:src="@{/images/coffee-beans.png}" class="navbar-brand-image img-fluid" alt="Barista Cafe Template">
+                    Dharan
+                </a>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
+                            <a class="nav-link" href="/login">login</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <a class="nav-link" href="/profile">Profile</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <a class="nav-link" href="/post/add">Add Post</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a class="nav-link" href="/admin">admin</a>
+                        </li>
+                        <!--/* <li class="nav-item" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_EDITOR')">
+                            <a class="nav-link" href="/admin">admin</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasAuthority('RESET_ANY_USER_PASSWORD')">
+                            <a class="nav-link" href="/editor">editor</a>
+                        </li> */-->
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <a class="nav-link" href="/logout">logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
         <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
-
             <div class="container" style="background-color: rgb(22, 23, 47);">
                 <form class="custom-form booking-form" action="#" method="post" role="form" th:action="@{/login}">
                     <div class="text-center mb-4 pb-lg-2">
@@ -20,26 +74,115 @@
                     </div>
                     <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Enter the Email"
-                      required>
+                        required>
                     <input type="password" name="password" id="password" class="form-control"
-                      placeholder="Enter the Password" required>
+                        placeholder="Enter the Password" required>
                     <input type="Submit" value="Submit" style="background-color: chocolate; " class="form-control">
                     <input type="checkbox" class="form-check-input" value="remember-me" id="remember-me"
-                      name="remember-me">
+                        name="remember-me">
                     <label style="color:white;" class="form-check-label" for="flexCheckChecked">Remember me</label>
                     <a th:href="@{/forgot_password}" class="link-secondary">Forgot password</a>
                 </form>
             </div>
 
-            <div class="hero-slides"></div>
+            <div class="hero-slides"></div> 
         </section>
-        <!-- footer -->
-        <footer th:replace="~{/fragments/footer :: footer}"> </footer>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+    
+                    <div class="col-lg-4 col-12 me-auto">
+                        <em class="text-white d-block mb-4">Where to find us?</em>
+    
+                        <strong class="text-white">
+                            <i class="bi-geo-alt me-2"></i>
+                            Bandra West, Mumbai, Maharashtra 400050, India
+                        </strong>
+    
+                        <ul class="social-icon mt-4">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-facebook">
+                                </a>
+                            </li>
+    
+                            <li class="social-icon-item">
+                                <a href="https://x.com/minthu" target="_new" class="social-icon-link bi-twitter">
+                                </a>
+                            </li>
+    
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-whatsapp">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="col-lg-3 col-12 mt-4 mb-3 mt-lg-0 mb-lg-0">
+                        <em class="text-white d-block mb-4">Contact</em>
+    
+                        <p class="d-flex mb-1">
+                            <strong class="me-2">Phone:</strong>
+                            <a href="tel: 305-240-9671" class="site-footer-link">
+                                (65)
+                                305 2409 671
+                            </a>
+                        </p>
+    
+                        <p class="d-flex">
+                            <strong class="me-2">Email:</strong>
+    
+                            <a href="mailto:info@yourgmail.com" class="site-footer-link">
+                                hello@barista.co
+                            </a>
+                        </p>
+                    </div>
+    
+    
+                    <div class="col-lg-5 col-12">
+                        <em class="text-white d-block mb-4">Opening Hours.</em>
+    
+                        <ul class="opening-hours-list">
+                            <li class="d-flex">
+                                Monday - Friday
+                                <span class="underline"></span>
+    
+                                <strong>9:00 - 18:00</strong>
+                            </li>
+    
+                            <li class="d-flex">
+                                Saturday
+                                <span class="underline"></span>
+    
+                                <strong>11:00 - 16:30</strong>
+                            </li>
+    
+                            <li class="d-flex">
+                                Sunday
+                                <span class="underline"></span>
+    
+                                <strong>Closed</strong>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="col-lg-8 col-12 mt-4">
+                        <p class="copyright-text mb-0">Copyright © Barista Cafe 2048
+                            - Design: <a rel="sponsored" href="https://www.tooplate.com" target="_blank">Tooplate</a></p>
+                    </div>
+                </div>
+                <script th:src="@{/js/jquery.min.js}"></script>
+                <script th:src="@{/js/bootstrap.min.js}"></script>
+                <script th:src="@{/js/jquery.sticky.js}"></script>
+                <script th:src="@{/js/click-scroll.js}"></script>
+                <script th:src="@{/js/vegas.min.js}"></script>
+                <script th:src="@{/js/custom.js}"></script>
+                <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script>
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#editor' ))
+                </script>
+        </footer>
     </main>
-
-    <!-- JAVASCRIPT FILES -->
-
-
 </body>
 
 </html>

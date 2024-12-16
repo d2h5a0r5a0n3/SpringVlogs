@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0.30
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Dharan@123
+      MYSQL_DATABASE: springboot
+      MYSQL_USER: springboot-user
+      MYSQL_PASSWORD: Dharan@123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - springboot-network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: springboot-app
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/springboot
+      SPRING_DATASOURCE_USERNAME: springboot-user
+      SPRING_DATASOURCE_PASSWORD: Dharan@123
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_USERNAME: your-email@gmail.com
+      SPRING_MAIL_PASSWORD: your-email-password
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - springboot-network
+
+volumes:
+  mysql_data:
+
+networks:
+  springboot-network:

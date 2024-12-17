@@ -31,25 +31,12 @@ pipeline {
                 bat 'mvnw.cmd test'
             }
         }
-
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
                 bat "docker build -t %IMAGE_NAME%:latest ."
             }
         }
-
-        stage('Push Docker Image') {
-            when {
-                expression { DOCKER_REGISTRY != '' }
-            }
-            steps {
-                echo 'Tagging and pushing Docker image to registry...'
-                bat "docker tag %IMAGE_NAME%:latest %DOCKER_REGISTRY%/%IMAGE_NAME%:latest"
-                bat "docker push %DOCKER_REGISTRY%/%IMAGE_NAME%:latest"
-            }
-        }
-
         stage('Deploy with Docker Compose') {
             steps {
                 echo 'Deploying application using Docker Compose...'

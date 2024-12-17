@@ -34,14 +34,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                bat "docker build -t %IMAGE_NAME%:latest ."
-            }
-        }
-        stage('Deploy with Docker Compose') {
-            steps {
-                echo 'Deploying application using Docker Compose...'
                 bat 'docker-compose down'
-                bat 'docker-compose up -d'
+                bat "docker-compose up --build"
             }
         }
     }

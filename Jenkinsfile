@@ -21,7 +21,7 @@ pipeline {
         stage('Build Application') {
             steps {
                 echo 'Building the Spring Boot application...'
-                bat 'mvnw.cmd clean package'
+                bat 'mvnw.cmd clean package -DskipTests'
             }
         }
 

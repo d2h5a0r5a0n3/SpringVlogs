@@ -21,16 +21,10 @@ pipeline {
         stage('Build Application') {
             steps {
                 echo 'Building the Spring Boot application...'
-                bat 'mvnw.cmd clean package -DskipTests'
+                bat 'mvnw.cmd clean package'
             }
         }
 
-        stage('Run Unit Tests') {
-            steps {
-                echo 'Running unit tests...'
-                bat 'mvnw.cmd test'
-            }
-        }
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'

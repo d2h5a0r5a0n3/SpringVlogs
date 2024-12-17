@@ -1,0 +1,130 @@
+/* small-navbar.css */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #343a40; /* Dark background color */
+    padding: 5px 15px; /* Reduce padding to make the navbar smaller */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white; /* Default color */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar-toggler {
+    border: none;
+    color: white;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-left: auto; /* Ensure items are pushed to the right */
+}
+
+.nav-item {
+    margin: 0 8px; /* Reduce the margin between nav items */
+}
+
+.nav-link {
+    color: white;
+    font-size: 0.8rem; /* Smaller font size for nav items */
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    padding: 4px 8px; /* Reduce padding for a more compact look */
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.nav-link i {
+    margin-right: 6px; /* Space between icon and text */
+    font-size: 1.1rem; /* Adjust icon size */
+}
+
+.nav-link:hover {
+    color: #ffc107;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffc107;
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #ffc107;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Change navbar brand color when toggled */
+.navbar-toggler.collapsed ~ .navbar-nav .navbar-brand {
+    color: #ffc107; /* Color when navbar is toggled */
+}
+
+.admin-section {
+    font-size: 2rem; /* Increase the font size for "Admin..." */
+    font-weight: 700; /* Make it bold */
+    color: #000000; /* Give it a color to make it stand out */
+    text-align: center; /* Center the text */
+    margin-top: 50px; /* Add some spacing from the top */
+}
+
+@media (max-width: 992px) {
+    .navbar-collapse {
+        background-color: #343a40;
+        padding: 8px 15px; /* Adjust padding for smaller screens */
+    }
+
+    .nav-item {
+        margin: 6px 0; /* Reduce margin for mobile view */
+        text-align: center;
+    }
+
+    .nav-link {
+        font-size: 0.9rem; /* Slightly increase font size for better readability on small screens */
+        padding: 5px 8px; /* Adjust padding for better mobile view */
+    }
+
+    .admin-section {
+        font-size: 1.5rem; /* Reduce font size for smaller screens */
+        margin-top: 30px; /* Reduce margin for smaller screens */
+    }
+}
+
+/* Mobile-specific styling */
+@media (max-width: 576px) {
+    .navbar {
+        padding: 5px 10px; /* Further reduce padding on very small screens */
+    }
+
+    .nav-item {
+        margin: 4px 0; /* Further reduce margin */
+    }
+}

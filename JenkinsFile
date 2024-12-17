@@ -24,14 +24,14 @@ pipeline {
         stage('Build Application') {
             steps {
                 echo 'Building the Spring Boot application...'
-                sh './mvnw clean package -DskipTests'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
         stage('Run Unit Tests') {
             steps {
                 echo 'Running unit tests...'
-                sh './mvnw test'
+                sh 'mvn test'
             }
         }
 

@@ -3,7 +3,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #16172f;
-    color: white;
+    color: black;
+    overflow-x: hidden;
 }
 
 a {
@@ -16,17 +17,25 @@ a:hover {
     color: #f4a261;
 }
 
+/*nav bar*/
+/* small-navbar.css */
+
 .navbar {
-    background-color: #343a40; 
-    padding: 5px 15px; 
+    background-color: #343a40; /* Dark background color */
+    padding: 5px 15px; /* Reduce padding to make the navbar smaller */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;  
 }
 
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: 700;
-    color: white; 
+    color: white; /* Default color */
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -42,21 +51,21 @@ a:hover {
     margin: 0;
     padding: 0;
     list-style: none;
-    margin-left: auto; 
+    margin-left: auto; /* Ensure items are pushed to the right */
 }
 
 .nav-item {
-    margin: 0 8px; 
+    margin: 0 8px; /* Reduce the margin between nav items */
 }
 
 .nav-link {
     color: white;
-    font-size: 0.8rem; 
+    font-size: 0.8rem; /* Smaller font size for nav items */
     font-weight: 500;
     text-transform: uppercase;
     text-decoration: none;
     position: relative;
-    padding: 4px 8px; 
+    padding: 4px 8px; /* Reduce padding for a more compact look */
     display: flex;
     align-items: center;
     transition: color 0.3s, transform 0.3s;
@@ -64,7 +73,7 @@ a:hover {
 
 .nav-link i {
     margin-right: 6px; /* Space between icon and text */
-    font-size: 1.1rem; 
+    font-size: 1.1rem; /* Adjust icon size */
 }
 
 .nav-link:hover {
@@ -94,9 +103,9 @@ a:hover {
     width: 100%;
 }
 
-
+/* Change navbar brand color when toggled */
 .navbar-toggler.collapsed ~ .navbar-nav .navbar-brand {
-    color: #ffc107; 
+    color: #ffc107; /* Color when navbar is toggled */
 }
 
 /* .admin-section {
@@ -139,86 +148,80 @@ a:hover {
         margin: 4px 0; /* Further reduce margin */
     }
 }
-
 .hero-section {
+    padding: 50px 0;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    background-color: #16172F;
 }
 
 .hero-section .container {
-    max-width: 500px;
-    padding: 30px;
+    width: 60%;
     border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    background-color: #1d1f47;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Form Styling */
+/* Form Styles */
 .custom-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    padding: 20px;
 }
 
-.custom-form input[type="password"],
-.custom-form input[type="submit"],.custom-form input[type="text"] {
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-}
-
-.custom-form input[type="password"],.custom-form input[type="text"]{
-    background-color: #1e1e3f;
-    color: #fff;
-    border: 1px solid #444;
-}
-
-.custom-form input[type="password"]::placeholder,.custom-form input[type="text"]::placeholder {
-    color: #aaa;
-}
-
-.custom-form input[type="password"]:focus,.custom-form input[type="text"]:focus {
-    border-color: #ffc107;
-    box-shadow: 0 0 5px #ffc107;
-}
-
-.custom-form input[type="submit"] {
-    width:60%;
-    margin:0 auto;
-    display:block;
-    background-color: chocolate;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.custom-form input[type="submit"]:hover {
-    background-color: #ff9933;
-}
-
-/* Centered Login Link */
-.custom-form a {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    color: #ffc107;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.custom-form a:hover {
-    text-decoration: underline;
-    color: #f4a261;
-}
-
-/* Text Centering */
-.text-center h2 {
-    font-size: 24px;
-    color: #ffc107;
+.custom-form h2 {
+    font-size: 2rem;
     margin-bottom: 20px;
 }
+
+.form-control {
+    background-color: white;
+    color:black;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.form-control:focus {
+    border-color: #f0ad4e;
+    outline: none;
+    box-shadow: 0 0 8px rgba(240, 173, 78, 0.8);
+}
+
+textarea.form-control {
+    resize: none;
+    height: 250px;
+}
+
+input[type="submit"] {
+    background-color: #f0ad4e;
+    width: 20%;
+    margin:0 auto;
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #d48e40;
+}
+.ck-editor__editable {
+    color: black !important; 
+    background-color: white !important; 
+    border: 1px solid #444 !important;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#editor {
+    background-color: white !important; 
+    color: black !important; 
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+

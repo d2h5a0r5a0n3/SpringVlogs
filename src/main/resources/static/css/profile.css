@@ -1,0 +1,185 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #16172f;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #f4a261;
+}
+
+/*nav bar*/
+/* small-navbar.css */
+
+.navbar {
+    background-color: #343a40; /* Dark background color */
+    padding: 5px 15px; /* Reduce padding to make the navbar smaller */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white; /* Default color */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar-toggler {
+    border: none;
+    color: white;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-left: auto; /* Ensure items are pushed to the right */
+}
+
+.nav-item {
+    margin: 0 8px; /* Reduce the margin between nav items */
+}
+
+.nav-link {
+    color: white;
+    font-size: 0.8rem; /* Smaller font size for nav items */
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    padding: 4px 8px; /* Reduce padding for a more compact look */
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.nav-link i {
+    margin-right: 6px; /* Space between icon and text */
+    font-size: 1.1rem; /* Adjust icon size */
+}
+
+.nav-link:hover {
+    color: #ffc107;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffc107;
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #ffc107;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Change navbar brand color when toggled */
+.navbar-toggler.collapsed ~ .navbar-nav .navbar-brand {
+    color: #ffc107; /* Color when navbar is toggled */
+}
+
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);  /* Adjust height to exclude navbar height */
+    padding-top: 80px;  /* Optional: If you want to leave space for navbar */
+}
+
+/* Profile container */
+.profile-container {
+    width: 80%;
+    max-width: 900px;
+    background-color: #1e2138;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.profile-title {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+    color:white;
+}
+
+.profile-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.profile-image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+img.rounded-circle {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+.profile-details {
+    width: 65%;
+}
+
+.form-control, .btn-submit {
+    background-color: #1e2138;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.btn-submit {
+    background-color: #f39c12;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+}
+
+.btn-submit:hover {
+    background-color: #e67e22;
+}
+.custom-form input[type="email"],
+.custom-form input[type="text"],
+.custom-form input[type="number"],
+.custom-form input[type="date"],
+.custom-form select {
+  margin-bottom: 15px; /* Increased spacing between fields */
+}
+.custom-form input[type="submit"]{
+    margin:0 auto;
+    display: block;
+    width:50%
+}

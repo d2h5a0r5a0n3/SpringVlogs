@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     margin: 0;
@@ -16,9 +17,12 @@ a:hover {
     color: #f4a261;
 }
 
+/*nav bar*/
+/* small-navbar.css */
+
 .navbar {
-    background-color: #343a40; 
-    padding: 5px 15px; 
+    background-color: #343a40; /* Dark background color */
+    padding: 5px 15px; /* Reduce padding to make the navbar smaller */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 }
@@ -26,7 +30,7 @@ a:hover {
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: 700;
-    color: white; 
+    color: white; /* Default color */
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -42,21 +46,21 @@ a:hover {
     margin: 0;
     padding: 0;
     list-style: none;
-    margin-left: auto; 
+    margin-left: auto; /* Ensure items are pushed to the right */
 }
 
 .nav-item {
-    margin: 0 8px; 
+    margin: 0 8px; /* Reduce the margin between nav items */
 }
 
 .nav-link {
     color: white;
-    font-size: 0.8rem; 
+    font-size: 0.8rem; /* Smaller font size for nav items */
     font-weight: 500;
     text-transform: uppercase;
     text-decoration: none;
     position: relative;
-    padding: 4px 8px; 
+    padding: 4px 8px; /* Reduce padding for a more compact look */
     display: flex;
     align-items: center;
     transition: color 0.3s, transform 0.3s;
@@ -64,7 +68,7 @@ a:hover {
 
 .nav-link i {
     margin-right: 6px; /* Space between icon and text */
-    font-size: 1.1rem; 
+    font-size: 1.1rem; /* Adjust icon size */
 }
 
 .nav-link:hover {
@@ -94,9 +98,9 @@ a:hover {
     width: 100%;
 }
 
-
+/* Change navbar brand color when toggled */
 .navbar-toggler.collapsed ~ .navbar-nav .navbar-brand {
-    color: #ffc107; 
+    color: #ffc107; /* Color when navbar is toggled */
 }
 
 /* .admin-section {
@@ -139,86 +143,99 @@ a:hover {
         margin: 4px 0; /* Further reduce margin */
     }
 }
-
+/* Hero Section */
 .hero-section {
-    min-height: 100vh;
+    height: 90vh; 
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    align-items: center; 
+    justify-content: center; 
+    background: linear-gradient(145deg, #2b2c54, #202143);
+    padding: 0;
+    margin: 0;
 }
 
+/* Container inside the hero section */
 .hero-section .container {
-    max-width: 500px;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px; 
+    padding: 0;
+    background-color: rgb(22, 23, 47); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px; 
 }
-
-/* Form Styling */
+/* Custom Form */
 .custom-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 8px;
+    padding: 2rem; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    margin: 0; 
 }
 
-.custom-form input[type="password"],
-.custom-form input[type="submit"],.custom-form input[type="text"] {
-    padding: 10px 15px;
-    font-size: 16px;
+
+/* Form Title */
+.custom-form h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem; 
+}
+
+.custom-form .form-control {
+    margin-bottom: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.custom-form .form-control:focus {
     outline: none;
+    box-shadow: 0 0 5px rgba(244, 162, 97, 0.8);
 }
 
-.custom-form input[type="password"],.custom-form input[type="text"]{
-    background-color: #1e1e3f;
-    color: #fff;
-    border: 1px solid #444;
-}
-
-.custom-form input[type="password"]::placeholder,.custom-form input[type="text"]::placeholder {
-    color: #aaa;
-}
-
-.custom-form input[type="password"]:focus,.custom-form input[type="text"]:focus {
-    border-color: #ffc107;
-    box-shadow: 0 0 5px #ffc107;
-}
 
 .custom-form input[type="submit"] {
-    width:60%;
-    margin:0 auto;
-    display:block;
-    background-color: chocolate;
+    width: 35%; 
+    margin: 0 auto; 
+    display: block; 
+    border: none;
     color: white;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .custom-form input[type="submit"]:hover {
-    background-color: #ff9933;
+    background-color: #a44b00;
 }
 
-/* Centered Login Link */
-.custom-form a {
-    display: block;
-    text-align: center;
+
+.form-options {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 15px; 
     margin-top: 10px;
-    color: #ffc107;
-    text-decoration: none;
-    font-weight: bold;
 }
 
-.custom-form a:hover {
-    text-decoration: underline;
-    color: #f4a261;
+.form-check-input {
+    margin-right: 5px; 
 }
 
-/* Text Centering */
-.text-center h2 {
-    font-size: 24px;
-    color: #ffc107;
-    margin-bottom: 20px;
+/* Style for the Forgot password link */
+.link {
+    color: #007bff;
+    text-decoration: none; 
+    font-weight: 500; 
+    text-decoration: underline; 
 }
+
+.link:hover {
+    color: #0056b3;
+    text-decoration: underline; 
+}
+
+
+
